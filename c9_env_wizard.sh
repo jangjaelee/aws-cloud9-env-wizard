@@ -43,7 +43,6 @@ then
     usage
 fi
 
-
 # Loading configuration for Cloud9 Enviroment
 if [ -f ./c9_env_wizard.conf ]
 then
@@ -51,7 +50,6 @@ then
 else 
   usage
 fi
-
 
 # create cloud9 resource
 function create_cloud9() {
@@ -77,13 +75,13 @@ function delete_cloud9() {
 
 # create configuration for aws credentials
 function config_aws() {
-	aws_configure
-	
-	if [ ! -d ${AWS_CLI_HOME} ]
-	then
-	    mkdir -pv ${AWS_CLI_HOME}
-	    
-	    touch ${AWS_CLI_CREDENTALS}
+    aws_configure
+
+    if [ ! -d ${AWS_CLI_HOME} ]
+    then
+        mkdir -pv ${AWS_CLI_HOME}
+
+        touch ${AWS_CLI_CREDENTALS}
         echo -e "[default]" >> ${AWS_CLI_CREDENTALS}
         echo -e "aws_access_key_id = ${AWS_ACCESS_KEY}" >> ${AWS_CLI_CREDENTALS}
         echo -e "aws_secret_access_key = ${AWS_SECRET_ACCESS_KEY}" >> ${AWS_CLI_CREDENTALS}
@@ -98,28 +96,28 @@ function config_aws() {
         echo -e "has been created a file. [${AWS_CLI_CREDENTALS}, ${AWS_CLI_CONFIG}"
     else
         echo -e "AWS config file is already created."
-	fi
+    fi
 }
 
 # create configuration for kubernetes (kube config)
 function config_k8s() {
-	echo "k8s"
+    echo "k8s"
 }
 
 # git clone for terraform source (dev, prod, modules)
 function git_clone() {
     git_configure
-    
+
     if [ ! -d ${terraform_home} ]
     then
         mkdir -pv ${terraform_modules}
         mkdir -pv ${terraform_home}/${dev_git_repo}
         #mkdir -pv ${terraform_home}/${prod_git_repo}
     fi
-	
+
     git clone ${default_git_repo}${dev_git_repo}.git ./${terraform_home}/${dev_git_repo}
     #git clone ${default_git_repo}${prod_git_repo}.git ./${terraform_home}/${prod_git_repo}
-	
+
     #for i in ${modules_git_repo}
     #do
     #    git clone ${default_git_repo}${i}.git  ./${terraform_modules}/${i}
@@ -128,7 +126,7 @@ function git_clone() {
 
 # downloading a terraform binary
 function terraform() {
-	terraform_configure
+    terraform_configure
 
     curl -s -L -O http://${terraform_binary}
     unzip -o ${terraform_archive}
@@ -136,7 +134,7 @@ function terraform() {
     sudo chown -v root.root terraform
     sudo mv -fv terraform /usr/local/bin
     unlink ${terraform_archive}
-    
+
     if [ ! -f "$HOME/.terraformrc" ]
     then
         touch $HOME/.terraformrc
@@ -147,8 +145,8 @@ function terraform() {
 
 # output an invalid option
 function invalid_opt() {
-	local i=$1
-    echo >&2 "ERR: Invalid option: ${i}"	
+    local i=$1
+    echo >&2 "ERR: Invalid option: ${i}"    
 }
 
 # main
