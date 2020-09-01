@@ -6,7 +6,7 @@
 # * Auther   : Alex, Lee
 # * Created  : 2020-08-31
 # * Modified : 2020-09-01 
-# * E-mail   : jjlee@megazone.com
+# * E-mail   : cine0831@gmail.com
 #**/
 #
 #set -e
