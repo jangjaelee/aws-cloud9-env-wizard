@@ -101,7 +101,12 @@ function config_aws() {
 
 # create configuration for kubernetes (kube config)
 function config_k8s() {
-    echo "k8s"
+    aws_configure
+    cloud9_configure
+    kubernetes_configure
+    
+    echo -e "${aws_auth_cm_template}" > ${designated_user}-aws-auth-cm.yml
+    aws eks --region ${DEFAULT_REGION} update-kubeconfig --name ${cluster_name}
 }
 
 # git clone for terraform source (dev, prod, modules)
