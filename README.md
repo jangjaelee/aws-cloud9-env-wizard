@@ -45,6 +45,6 @@ Description:
     -h or -help
 ```
 
-
 ## How to Cloud9 AWS Credentials Disable
+Cloud9을 생성후 AWS Credentials을 비활성화 하여야 c9_env_wizard로 생성된 AWS config가 Cloud9에 의해 변경되지 않고 유지 할 수 있다.
 ![ex_screenshot](./Cloud9_AWS_credentials_disable.png)
