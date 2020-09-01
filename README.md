@@ -44,3 +44,7 @@ Description:
     -t or -terraform        download           |  downloding a Terraform Bindary
     -h or -help
 ```
+
+
+## How to Cloud9 AWS Credentials Disable
+![ex_screenshot](./Cloud9_AWS_credentials_disable.png)
