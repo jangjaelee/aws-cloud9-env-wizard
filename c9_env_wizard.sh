@@ -5,8 +5,8 @@
 # * Title    : Cloud9 Enviroment Wizard
 # * Auther   : Alex, Lee
 # * Created  : 2020-08-31
-# * Modified : 
-# * E-mail   : cine0831@gmail.com
+# * Modified : 2020-09-01 
+# * E-mail   : jjlee@megazone.com
 #**/
 #
 #set -e
@@ -28,11 +28,11 @@ Examples:
     ${0##*/} -c9 create or delete
     
 Description:
-    -c or -cloud9           create or delete | create Cloud9
-    -a or -aws              config           | configuration for AWS CLI
-    -k or -k8s              config           | configuration for Kubernetes (kube config)
-    -g or -git              clone            | clone Terraform source form Git Repository
-    -t or -terraform        download         | downloding a Terraform Bindary
+    -c or -cloud9           create or delete   |  create Cloud9
+    -a or -aws              config             |  configuration for AWS CLI
+    -k or -k8s              config or kubectl  |  configuration for Kubernetes (kube config)
+    -g or -git              clone              |  clone Terraform source form Git Repository
+    -t or -terraform        download           |  downloding a Terraform Bindary
     -h or -help
 "
 exit 1
@@ -107,6 +107,15 @@ function config_k8s() {
     
     echo -e "${aws_auth_cm_template}" > ${designated_user}-aws-auth-cm.yml
     aws eks --region ${DEFAULT_REGION} update-kubeconfig --name ${cluster_name}
+}
+
+function kubectl() {
+    kubernetes_configure
+    
+    curl -o kubectl https://${kubectl_url}
+    chmod -v 755 kubectl
+    sudo chown -v root.root kubectl
+    sudo mv -fv kubectl /usr/local/bin
 }
 
 # git clone for terraform source (dev, prod, modules)
@@ -184,6 +193,9 @@ do
             if [ "$@" = "config" ]
             then
                 config_k8s
+            elif [ "$@" = "kubectl" ]
+            then
+                kubectl
             else
                 invalid_opt $@
             fi
