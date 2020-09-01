@@ -112,7 +112,7 @@ function config_k8s() {
 function kubectl() {
     kubernetes_configure
     
-    curl -o kubectl https://${kubectl_url}
+    curl -s -o kubectl https://${kubectl_url}
     chmod -v 755 kubectl
     sudo chown -v root.root kubectl
     sudo mv -fv kubectl /usr/local/bin
