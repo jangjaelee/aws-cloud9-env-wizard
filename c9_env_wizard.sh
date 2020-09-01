@@ -152,7 +152,7 @@ function terraform() {
     if [ ! -f "$HOME/.terraformrc" ]
     then
         touch $HOME/.terraformrc
-        echo -e "plugin_cache_dir = $HOME/.terraform.d/plugin-cache\ndisable_checkpoint = true" >> $HOME/.terraformrc
+        echo -e "plugin_cache_dir = \"$HOME/.terraform.d/plugin-cache\"\ndisable_checkpoint = true" >> $HOME/.terraformrc
         echo -e "has been created a file. [$HOME/.terraformrc] "
     fi
 }
