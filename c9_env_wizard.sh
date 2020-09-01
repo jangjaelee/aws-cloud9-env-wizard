@@ -106,6 +106,7 @@ function config_k8s() {
     kubernetes_configure
     
     echo -e "${aws_auth_cm_template}" > ${designated_user}-aws-auth-cm.yml
+    kubectl apply -f ${designated_user}-aws-auth-cm.yml    
     aws eks --region ${DEFAULT_REGION} update-kubeconfig --name ${cluster_name}
 }
 
