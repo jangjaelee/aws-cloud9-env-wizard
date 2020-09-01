@@ -21,6 +21,8 @@
 + Terraform 바이너리 다운로드 및 .terraformrc 파일 생성
 
 ## 사용방법
+c9_env_wizard.conf 파일의 variables을 구축하는 환경에 맞게 value를 입력한다.
+
 ```
 Usage: c9_env_wizard.sh [options] <command>
 Options:
