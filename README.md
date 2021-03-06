@@ -45,6 +45,12 @@ Description:
     -h or -help
 ```
 
+## SSH key gen 생성 후 SVC(GitLab or GitHub)에 등록
+```
+ssh-keygen -t rsa
+```
+SVC(GitLab or GitHub)에 생성한 id_rsa.pub 파일의 Key 값 등록
+
 ## How to Cloud9 AWS Credentials Disable
 Cloud9을 생성후 AWS Credentials을 비활성화 하여야 c9_env_wizard로 생성된 AWS config가 Cloud9에 의해 변경되지 않고 유지 할 수 있다.
 ![ex_screenshot](./Cloud9_AWS_credentials_disable.png)
